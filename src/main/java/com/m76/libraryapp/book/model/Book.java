@@ -1,5 +1,6 @@
 package com.m76.libraryapp.book.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -29,7 +30,6 @@ public class Book {
     private int pages;
 
     @Column(name = "isAvailable", nullable = false)
-    private boolean isAvailable;
-
+    private char isAvailable;
 
 }
