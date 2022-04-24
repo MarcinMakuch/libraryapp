@@ -29,9 +29,18 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<Book> getBookById(@PathVariable("id") long id){
         return new ResponseEntity<Book>(bookService.getBookById(id), HttpStatus.OK);
+    }
+    @PutMapping("{id}")
+    public ResponseEntity<Book> updateBook(@PathVariable("id") long id, @RequestBody Book book){
+        return new ResponseEntity<Book>(bookService.updateBook(book, id), HttpStatus.OK);
+    }
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteBook(@PathVariable("id") long id){
+        bookService.delateBookById(id);
+        return new ResponseEntity<String>("Book was deleted", HttpStatus.OK);
     }
 
 }

@@ -12,7 +12,7 @@ public interface BookService {
 
     Book getBookById(long id);
 
-    void updateBook(Book book);
+    Book updateBook(Book book, long id);
 
     void delateBookById(long id);
 }

@@ -1,5 +1,6 @@
 package com.m76.libraryapp.book.service.implementation;
 
+import com.m76.libraryapp.book.exception.BookNotFoundException;
 import com.m76.libraryapp.book.model.Book;
 import com.m76.libraryapp.book.repository.BookRepository;
 import com.m76.libraryapp.book.service.BookService;
@@ -27,13 +28,23 @@ public class BookServiceImpl implements BookService {
     }
 
     public Book getBookById(long id) {
-        return bookRepository.getById(id);
+        return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book", "Id", id));
     }
 
-    public void updateBook(Book book) {
-        bookRepository.save(book);
+    public Book updateBook(Book book, long id) {
+        Book existingBook = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book", "Id", id));
+        existingBook.setAuthor(book.getAuthor());
+        existingBook.setTitle(book.getTitle());
+        existingBook.setPublisher(book.getPublisher());
+        existingBook.setPages(book.getPages());
+        existingBook.setYearOfPublishing(book.getYearOfPublishing());
+        existingBook.setIsAvailable(book.getIsAvailable());
+        bookRepository.save(existingBook);
+        return existingBook;
     }
-    public void delateBookById(long id){
+
+    public void delateBookById(long id) {
+        bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book", "Id", id));
         bookRepository.deleteById(id);
     }
 }
