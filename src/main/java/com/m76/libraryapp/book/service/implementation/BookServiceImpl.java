@@ -28,11 +28,13 @@ public class BookServiceImpl implements BookService {
     }
 
     public Book getBookById(long id) {
-        return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book", "Id", id));
+        return bookRepository.findById(id).orElseThrow(() ->
+                new BookNotFoundException("Book", "Id", id));
     }
 
     public Book updateBook(Book book, long id) {
-        Book existingBook = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book", "Id", id));
+        Book existingBook = bookRepository.findById(id).orElseThrow(() ->
+                new BookNotFoundException("Book", "Id", id));
         existingBook.setAuthor(book.getAuthor());
         existingBook.setTitle(book.getTitle());
         existingBook.setPublisher(book.getPublisher());
@@ -44,7 +46,8 @@ public class BookServiceImpl implements BookService {
     }
 
     public void delateBookById(long id) {
-        bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book", "Id", id));
+        bookRepository.findById(id).orElseThrow(() ->
+                new BookNotFoundException("Book", "Id", id));
         bookRepository.deleteById(id);
     }
 }
