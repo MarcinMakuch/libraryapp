@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Table(name = "borrowedbooks")
 public class BorrowedBook {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

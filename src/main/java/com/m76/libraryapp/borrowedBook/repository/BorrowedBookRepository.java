@@ -1,14 +1,12 @@
-package com.m76.libraryapp.book.repository;
+package com.m76.libraryapp.borrowedBook.repository;
 
-import com.m76.libraryapp.book.model.Book;
 import com.m76.libraryapp.borrowedBook.model.BorrowedBook;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface BookRepository extends JpaRepository<Book, Long> {
+public interface BorrowedBookRepository extends JpaRepository<BorrowedBook, Long> {
 
 }
